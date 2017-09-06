@@ -68,6 +68,7 @@
     function playSample(key) {
       let sample = document.querySelector(`audio[data-key="${key}"]`)
       if (!sample) return;
+      sample.currentTime = 0;
       sample.play();
     }
 
