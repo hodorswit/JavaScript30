@@ -68,7 +68,7 @@
     function playSample(key) {
       let sample = document.querySelector(`audio[data-key="${key}"]`)
       if (!sample) return;
-      new Audio(sample.src).play();
+      sample.play();
     }
 
     function coolEffect(key) {
