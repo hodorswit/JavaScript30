@@ -60,22 +60,22 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
   <script>
-    let soundMap = [...document.querySelectorAll("audio")].map(a => new Object({
-      key: a.attributes["data-key"].nodeValue,
-      file: a.src
-    }))
-
-    let keys = document.getElementsByClassName("keys")[0];
-    keys.addEventListener("click", (e) => {
-      if (e.target && e.target.parentElement !== "BODY") {
-        let key = e.target.parentElement.attributes["data-key"].nodeValue;
-        playSample(key);
-      }
+    document.addEventListener("keydown", (e) => {
+      playSample(e.keyCode);
+      coolEffect(e.keyCode);
     })
 
     function playSample(key) {
-      let sound = soundMap.filter(m => m.key === key)[0];
-      new Audio(sound.file).play();
+      let sample = document.querySelector(`audio[data-key="${key}"]`)
+      if (!sample) return;
+      new Audio(sample.src).play();
+    }
+
+    function coolEffect(key) {
+      let selectedKey = document.querySelector(`div[data-key="${key}"]`);
+      if (!selectedKey) return;
+      selectedKey.classList.add("playing");
+      setTimeout(() => selectedKey.classList.remove('playing'), 200)
     }
   </script>
 
