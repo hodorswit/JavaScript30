@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Console Tricks!</title>
 </head>
+
 <body>
 
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
@@ -18,29 +20,56 @@
     }
 
     // Regular
+    console.log('hello')
 
     // Interpolated
+    console.log('hello I am a %s string!', 'terrible')
 
     // Styled
+    //console.log('%c Cool text', 'font-size:50px;background:red;')
 
     // warning!
+    console.warn('oh dear');
 
     // Error :|
+    console.error('uh oh');
 
     // Info
+    console.info('some sort of fun fact')
 
     // Testing
+    console.assert(1 === 2, 'something failed')
 
     // clearing
+    console.clear();
 
     // Viewing DOM Elements
+    console.log(document.querySelector('p'))
+    console.dir(document.querySelector('p'))
 
     // Grouping together
+    console.clear();
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`);
+      console.log('This is ' + dog.name);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.groupEnd(`${dog.name}`);
+    })
 
     // counting
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Rob');
+    console.count('Wes');
+    console.count('Wes');
 
     // timing
+    console.time('fetching data');
+    setTimeout(() => console.timeEnd('fetching data') && console.log('long running'), 1000);
 
+    // table
+    console.table(dogs);
   </script>
 </body>
+
 </html>
